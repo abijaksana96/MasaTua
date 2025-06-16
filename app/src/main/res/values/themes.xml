@@ -6,4 +6,47 @@
     </style>
 
     <style name="Theme.MasaTua" parent="Base.Theme.MasaTua" />
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:width">56dp</item>
+        <item name="android:height">56dp</item>
+        <item name="android:background">@drawable/active_nav_indicator_background</item>
+    </style>
+
+    <!-- =================================================== -->
+    <!-- Style BARU untuk TextInputLayout -->
+    <!-- =================================================== -->
+    <style name="GoalTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <!-- Mengatur warna background field -->
+        <item name="boxBackgroundColor">@android:color/white</item>
+
+        <!-- Menghilangkan garis bawah -->
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+
+        <!-- Mengatur warna hint/label saat tidak di-fokus (putih) -->
+        <item name="android:textColorHint">@android:color/black</item>
+
+        <!-- Mengatur warna hint/label saat di-fokus (juga putih) -->
+        <item name="hintTextColor">@android:color/white</item>
+
+        <!-- Mengatur bentuk sudut -->
+        <item name="shapeAppearanceOverlay">@style/GoalShapeAppearance</item>
+    </style>
+
+    <!-- Style bantuan untuk mengatur sudut -->
+    <style name="GoalShapeAppearance" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item> <!-- Sesuaikan radius sudut di sini -->
+    </style>
+
+    <!-- Style untuk Progress Bar -->
+    <style name="GoalProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/custom_progress_bar</item>
+    </style>
+
+    <style name="ShapeAppearance.App.CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

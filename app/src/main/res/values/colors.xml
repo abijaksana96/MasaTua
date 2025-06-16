@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="palet1">#40130f</color>
+    <color name="palet2">#772c25</color>
+    <color name="palet3">#8f2e25</color>
+    <color name="palet4">#b2352a</color>
+    <color name="palet5">#cd4135</color>
+    <color name="palet6">#e15e52</color>
+    <color name="palet7">#ed857c</color>
+    <color name="palet8">#f5b2ac</color>
+    <color name="palet9">#fad2ce</color>
+    <color name="palet10">#fce6e4</color>
+    <color name="palet11">#fdf4f3</color>
+    <color name="palet12">#F05252</color>
+    <color name="palet13">#FEEA9F</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="active_red">#FF5722</color>
+    <color name="inactive_gray">#757575</color> ```
+
 </resources>

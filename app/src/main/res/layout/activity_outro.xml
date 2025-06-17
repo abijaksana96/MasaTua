@@ -54,6 +54,7 @@
         android:layout_marginTop="12dp"
         android:lineSpacingExtra="4dp"/>
 
+    <!-- TODO : Perbaiki jarak buttonnya (harus sama di tiap intro) -->
     <Button
         android:id="@+id/startButton"
         android:layout_width="0dp"

@@ -7,6 +7,7 @@
     android:background="@drawable/background_top"
     tools:context=".ProfileFragment">
 
+    <!--TODO : Perbaiki jadi 1 bahasa saja (bhs. indo)-->
 
     <ImageView
         android:id="@+id/iv_back_button_bg"

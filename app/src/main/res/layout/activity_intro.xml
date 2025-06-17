@@ -55,6 +55,7 @@
         android:lineSpacingExtra="4dp"/>
 
 
+    <!-- TODO : Perbaiki jarak indicatornya (harus sama di tiap intro) -->
     <LinearLayout
         android:id="@+id/dotIndicator"
         android:layout_width="wrap_content"

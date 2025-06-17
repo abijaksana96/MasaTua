@@ -7,6 +7,8 @@
     android:background="@drawable/background_top"
     tools:context=".CreateGoalFragment">
 
+    <!--TODO : Perbaiki jadi 1 bahasa saja (bhs. indo)-->
+
     <ImageView
         android:id="@+id/iv_back_button_bg"
         android:layout_width="48dp"

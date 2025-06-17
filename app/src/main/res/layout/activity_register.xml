@@ -7,6 +7,8 @@
     android:background="@drawable/splash_gradient2"
     android:padding="24dp">
 
+    <!--TODO : Perbaiki jadi 1 bahasa saja (bhs. indo)-->
+
     <!-- Title -->
     <TextView
         android:id="@+id/registerTitle"

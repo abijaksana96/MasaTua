@@ -9,6 +9,8 @@
     android:background="@drawable/background_card_red"
     android:padding="20dp">
 
+    <!--TODO : Ubah "User Profile" jadi bahasa indonesia-->
+
     <!-- Label "User Profile" di pojok kiri atas -->
     <TextView
         android:id="@+id/tv_user_profile_label"

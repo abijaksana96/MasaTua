@@ -26,7 +26,6 @@ public class OutroActivity extends AppCompatActivity {
         introImage = findViewById(R.id.introImage);
         titleText = findViewById(R.id.titleText);
         descText = findViewById(R.id.descText);
-        dotIndicator = findViewById(R.id.dotIndicator);
 
         gestureDetector = new GestureDetector(this, new SwipeGestureListener());
     }

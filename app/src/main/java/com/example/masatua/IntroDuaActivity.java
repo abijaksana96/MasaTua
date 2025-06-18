@@ -1,4 +1,5 @@
 package com.example.masatua;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;

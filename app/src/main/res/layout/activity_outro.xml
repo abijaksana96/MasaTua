@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="24dp"
+    android:id="@+id/main"
     android:background="@android:color/white"
     tools:context=".IntroDuaActivity">
 

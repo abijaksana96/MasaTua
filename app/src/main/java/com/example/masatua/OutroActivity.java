@@ -4,30 +4,42 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.masatua.databinding.ActivityOutroBinding;
+
 public class OutroActivity extends AppCompatActivity {
 
-    private ImageView introImage;
-    private TextView titleText, descText;
-    private LinearLayout dotIndicator;
-
     private GestureDetector gestureDetector;
+    private ActivityOutroBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_outro);
 
-        introImage = findViewById(R.id.introImage);
-        titleText = findViewById(R.id.titleText);
-        descText = findViewById(R.id.descText);
+        // Setup binding
+        binding = ActivityOutroBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         gestureDetector = new GestureDetector(this, new SwipeGestureListener());
+
+        // region LOGIC
+
+        // region button "mulai sekarang" logic
+        binding.startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(OutroActivity.this, LoginActivity.class));
+            }
+        });
+        //endregion
+
+        //endregion
     }
 
     @Override

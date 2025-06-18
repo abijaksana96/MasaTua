@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--TODO : Perbaiki jadi 1 bahasa saja (bhs. indo)-->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/loginLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_gradient2"
-    android:padding="24dp">
+    android:background="@drawable/splash_gradient2">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp">
 
 
 
@@ -15,7 +18,7 @@
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Ma\$aTua"
+        android:text="Selamat Datang di Ma\$aTua"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -27,7 +30,7 @@
         android:id="@+id/subtitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your data to continue"
+        android:text="Masukkan data Anda untuk melanjutkan"
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@id/welcomeText"
@@ -35,38 +38,38 @@
         android:layout_marginTop="8dp" />
 
 
-    <TextView
-        android:id="@+id/emailLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/subtitleText"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="32dp" />
+        <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/subtitleText"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="32dp" />
 
 
-    <EditText
-        android:id="@+id/emailInput"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:background="@drawable/edittext_bg"
-        android:hint="example@email.com"
-        android:paddingStart="16dp"
-        android:textColor="#000000"
-        android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/emailLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@drawable/edittext_bg"
+            android:hint="example@email.com"
+            android:paddingStart="16dp"
+            android:textColor="#000000"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@id/emailLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
     <TextView
         android:id="@+id/passwordLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
+        android:text="Kata Sandi"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -80,7 +83,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@drawable/edittext_bg"
-        android:hint="Password"
+        android:hint="Kata Sandi"
         android:inputType="textPassword"
         android:paddingStart="16dp"
         android:textColor="#000000"
@@ -93,7 +96,7 @@
         android:id="@+id/rememberCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remember me"
+        android:text="Ingat saya"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/passwordInput"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +106,7 @@
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forget Password?"
+        android:text="Lupa Password?"
         android:textColor="@color/palet1"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@id/passwordInput"
@@ -115,7 +118,7 @@
         android:id="@+id/signInButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:text="Sign in"
+        android:text="Masuk"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:stateListAnimator="@null"
@@ -131,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginBottom="28dp"
-        android:text="Don't have an account? "
+        android:text="Tidak punya akun? "
         android:textColor="@color/inactive_gray"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -142,11 +145,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="Sign up here"
+        android:text="Daftar disini"
         android:textColor="@color/palet1"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/signupText"
         app:layout_constraintStart_toEndOf="@id/signupText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Overlay dan ProgressBar -->
+    <View
+        android:id="@+id/overlayView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#80000000"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

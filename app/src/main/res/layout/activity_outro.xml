@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="24dp"
+    android:id="@+id/main"
     android:background="@android:color/white"
     tools:context=".IntroDuaActivity">
-
 
     <ImageView
         android:id="@+id/introImage"
@@ -51,22 +51,22 @@
         app:layout_constraintTop_toBottomOf="@id/titleText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:lineSpacingExtra="4dp"/>
 
-    <!-- TODO : Perbaiki jarak buttonnya (harus sama di tiap intro) -->
     <Button
         android:id="@+id/startButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginTop="90dp"
+        android:backgroundTint="@color/palet1"
+        android:stateListAnimator="@null"
         android:text="Mulai sekarang"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:stateListAnimator="@null"
-        android:backgroundTint="@color/palet1"
-        app:layout_constraintTop_toBottomOf="@id/descText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,15 +44,13 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <!--TODO : Perbaiki! Apakah "progress" bahasa indonesia?-->
-
     <!-- Label "Progress" (Dibuat lebih redup) -->
     <TextView
         android:id="@+id/tv_progress_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Progress"
+        android:text="Kemajuan"
         android:textStyle="bold"
         android:textColor="#F5CACA"
         android:textSize="12sp"

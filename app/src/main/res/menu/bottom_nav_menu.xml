@@ -4,21 +4,21 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="Beranda" />
 
     <item
         android:id="@+id/nav_calculator"
         android:icon="@drawable/ic_calculator"
-        android:title="Calculator" />
+        android:title="Kalkulator" />
 
     <item
         android:id="@+id/nav_goals"
         android:icon="@drawable/ic_goals"
-        android:title="Goals" />
+        android:title="Target" />
 
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_profile"
-        android:title="Profile" />
+        android:title="Profil" />
 
 </menu>

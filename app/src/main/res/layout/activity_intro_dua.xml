@@ -52,10 +52,8 @@
         app:layout_constraintTop_toBottomOf="@id/titleText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:lineSpacingExtra="4dp"/>
-
-    <!-- TODO : Perbaiki jarak indicatornya (harus sama di tiap intro) -->
 
     <LinearLayout
         android:id="@+id/dotIndicator"

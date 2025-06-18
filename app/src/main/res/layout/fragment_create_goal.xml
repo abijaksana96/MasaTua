@@ -7,8 +7,6 @@
     android:background="@drawable/background_top"
     tools:context=".CreateGoalFragment">
 
-    <!--TODO : Perbaiki jadi 1 bahasa saja (bhs. indo)-->
-
     <ImageView
         android:id="@+id/iv_back_button_bg"
         android:layout_width="48dp"
@@ -34,7 +32,7 @@
         android:id="@+id/tv_toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Goals"
+        android:text="Buat Target"
         android:textColor="@android:color/white"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -70,7 +68,7 @@
                 style="@style/GoalTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nama Goal">
+                android:hint="Nama Target">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -120,7 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="Target di Tahun ?">
+                android:hint="Target di Tahun?">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -187,7 +185,7 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/palet2"
         android:paddingVertical="14dp"
-        android:text="Add Goals"
+        android:text="Tambah Target Baru"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18sp"

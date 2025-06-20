@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".CalculatorFragment">
+
+    <!-- =================================================================== -->
+    <!-- Toolbar Kustom (Tetap di luar ScrollView) -->
+    <!-- =================================================================== -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_logos"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_title"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Dana Pensiun"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_logo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- =================================================================== -->
+    <!-- ScrollView yang berisi SEMUA KONTEN di bawah Toolbar -->
+    <!-- =================================================================== -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <!-- LinearLayout sebagai WADAH KONTEN dengan PADDING -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="24dp"
+            android:clipToPadding="false">
+
+            <!-- =================================================================== -->
+            <!-- SEMUA KONTEN DILETAKKAN DI SINI, TANPA ATRIBUT app:layout_... -->
+            <!-- =================================================================== -->
+
+            <!-- Bagian 1: Pengeluaran Saat Ini -->
+            <TextView
+                android:id="@+id/tv_info_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/background_info_dark"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:text="Hitung aset yang diperlukan untuk pensiun di umur yang kamu mau"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_info_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_illustration_1"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/ic_illustration"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_info_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/background_info_light"
+                    android:padding="12dp"
+                    android:text="Cari tahu pengeluaranmu per hari ini."
+                    android:textColor="@color/palet2"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_illustration_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_illustration_1"
+                    app:layout_constraintTop_toTopOf="@id/iv_illustration_1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_expense_monthly_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Pengeluaran / bulan" />
+
+            <LinearLayout
+                android:id="@+id/layout_expense_monthly"
+                style="@style/CalculatorInputContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/CalculatorCurrency"
+                    android:text="Rp" />
+
+                <EditText
+                    android:id="@+id/et_expense_monthly"
+                    style="@style/CalculatorEditText"
+                    android:hint="0"
+                    android:inputType="number" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIcon"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_expense_yearly_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Pengeluaran / tahun" />
+
+            <LinearLayout
+                android:id="@+id/layout_expense_yearly"
+                style="@style/CalculatorResultContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/CalculatorCurrency"
+                    android:text="Rp" />
+
+                <TextView
+                    android:id="@+id/tv_expense_yearly"
+                    style="@style/CalculatorResultText"
+                    tools:text="19,200,000" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIcon"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <!-- Bagian 2: Pengeluaran Saat Pensiun -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_info_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp">
+
+                <ImageView
+                    android:id="@+id/iv_illustration_2"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/ic_illustration"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_info_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/background_info_light"
+                    android:padding="12dp"
+                    android:text="Cari tahu pengeluaranmu saat pensiun nanti."
+                    android:textColor="@color/palet2"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_illustration_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_illustration_2"
+                    app:layout_constraintTop_toTopOf="@id/iv_illustration_2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_age_now_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Usiamu sekarang" />
+
+            <LinearLayout
+                android:id="@+id/layout_age_now"
+                style="@style/CalculatorInputContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_age_now"
+                    style="@style/CalculatorEditText"
+                    android:hint="0"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/CalculatorUnit"
+                    android:text="tahun" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIcon"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_retirement_age_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Kamu ingin pensiun di usia" />
+
+            <LinearLayout
+                android:id="@+id/layout_retirement_age"
+                style="@style/CalculatorInputContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_retirement_age"
+                    style="@style/CalculatorEditText"
+                    android:hint="0"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/CalculatorUnit"
+                    android:text="tahun" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIcon"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_inflation_rate_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Asumsi inflasi tahunan" />
+
+            <LinearLayout
+                android:id="@+id/layout_inflation_rate"
+                style="@style/CalculatorInputContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_inflation_rate"
+                    style="@style/CalculatorEditText"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    style="@style/CalculatorUnit"
+                    android:text="% / tahun" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIcon"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_expense_yearly_retirement_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Pengeluaran tahunan saat mulai pensiun nanti" />
+
+            <LinearLayout
+                android:id="@+id/layout_expense_yearly_retirement"
+                style="@style/CalculatorResultContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/CalculatorCurrency"
+                    android:text="Rp" />
+
+                <TextView
+                    android:id="@+id/tv_expense_yearly_retirement"
+                    style="@style/CalculatorResultText"
+                    tools:text="135,167,783" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIcon"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_total_needed_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Uang yang kamu butuhkan berdasarkan 4% rule" />
+
+            <LinearLayout
+                android:id="@+id/layout_total_needed"
+                style="@style/CalculatorResultContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_result_green">
+
+                <TextView
+                    style="@style/CalculatorCurrencyWhite"
+                    android:text="Rp" />
+
+                <TextView
+                    android:id="@+id/tv_total_needed"
+                    style="@style/CalculatorResultTextWhite"
+                    tools:text="3,379,194,582" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIconWhite"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <!-- Bagian 3: Kebutuhan Investasi -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_info_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp">
+
+                <ImageView
+                    android:id="@+id/iv_illustration_3"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/ic_illustration"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_info_4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/background_info_light"
+                    android:padding="12dp"
+                    android:text="Cari tahu jumlah investasi yang diperlukan"
+                    android:textColor="@color/palet2"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_illustration_3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_illustration_3"
+                    app:layout_constraintTop_toTopOf="@id/iv_illustration_3" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_existing_funds_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Dana pensiun yang telah tersedia sampai saat ini" />
+
+            <LinearLayout
+                android:id="@+id/layout_existing_funds"
+                style="@style/CalculatorInputContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/CalculatorCurrency"
+                    android:text="Rp" />
+
+                <EditText
+                    android:id="@+id/et_existing_funds"
+                    style="@style/CalculatorEditText"
+                    android:hint="0"
+                    android:inputType="number" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIcon"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_investment_return_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Target return investasi per tahun" />
+
+            <LinearLayout
+                android:id="@+id/layout_investment_return"
+                style="@style/CalculatorInputContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_investment_return"
+                    style="@style/CalculatorEditText"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    style="@style/CalculatorUnit"
+                    android:text="% / tahun" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIcon"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_monthly_investment_needed_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Target investasimu tiap bulan" />
+
+            <LinearLayout
+                android:id="@+id/layout_monthly_investment_needed"
+                style="@style/CalculatorResultContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/CalculatorCurrency"
+                    android:text="Rp" />
+
+                <TextView
+                    android:id="@+id/tv_monthly_investment_needed"
+                    style="@style/CalculatorResultText"
+                    tools:text="1,114,834" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIcon"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_age_needed_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Kamu akan pensiun dalam" />
+
+            <LinearLayout
+                android:id="@+id/layout_age_needed"
+                style="@style/CalculatorResultContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_age_needed"
+                    style="@style/CalculatorResultText"
+                    tools:text="40 Tahun" />
+
+            </LinearLayout>
+
+            <!-- Bagian 4: Tombol Hasil Strategi (CTA Card) -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_cta_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/background_cta"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tv_cta_subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Yay, mimpimu sudah jauh lebih nyata."
+                    android:textColor="@color/palet13"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/card_cta_arrow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_cta_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Ayo lihat hasil strategimu"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/card_cta_arrow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_cta_subtitle" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_cta_arrow"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    app:cardBackgroundColor="#FDE68A"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:tint="@color/palet6" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

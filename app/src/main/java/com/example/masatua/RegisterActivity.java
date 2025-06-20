@@ -16,20 +16,21 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.masatua.databinding.ActivityRegisterBinding;
 import com.example.masatua.models.User;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.masatua.utils.FirebaseManager; // Import FirebaseManager
+
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestore; // Masih perlu import ini untuk tipe FirebaseFirestore saja
 
 public class RegisterActivity extends AppCompatActivity {
     private ActivityRegisterBinding binding;
     private boolean isPasswordVisible = false;
-    private FirebaseAuth mAuth;
+    private FirebaseManager firebaseManager; // Gunakan FirebaseManager
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
 
-        // Setup binding
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -39,39 +40,27 @@ public class RegisterActivity extends AppCompatActivity {
             return insets;
         });
 
-        // region LOGIC
+        // Inisialisasi FirebaseManager
+        firebaseManager = FirebaseManager.getInstance();
 
-        // region "login disini" logic
-        binding.loginLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+        binding.loginLink.setOnClickListener(v -> {
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            finish();
         });
-        // endregion
 
-        mAuth = FirebaseAuth.getInstance();
-
-        // region Toggle password visibility
         binding.showHidePasswordIcon.setOnClickListener(v -> {
             if (isPasswordVisible) {
-                binding.passwordInput.setInputType(129); // TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PASSWORD
+                binding.passwordInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 binding.showHidePasswordIcon.setImageResource(R.drawable.ic_eye_open);
             } else {
-                binding.passwordInput.setInputType(144); // TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-//                showHidePasswordIcon.setImageResource(R.drawable.ic_eye_closed);
+                binding.passwordInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+//                binding.showHidePasswordIcon.setImageResource(R.drawable.ic_eye_closed);
             }
             isPasswordVisible = !isPasswordVisible;
             binding.passwordInput.setSelection(binding.passwordInput.length());
         });
-        // endregion
 
         binding.signUpButton.setOnClickListener(v -> registerUser());
-        binding.loginLink.setOnClickListener(v -> {
-            finish();
-        });
-
-        // endregion
     }
 
     private void registerUser() {
@@ -98,34 +87,35 @@ public class RegisterActivity extends AppCompatActivity {
 
         showLoading(true);
 
-        mAuth.createUserWithEmailAndPassword(email, password)
+        firebaseManager.getAuth().createUserWithEmailAndPassword(email, password) // Menggunakan FirebaseManager
                 .addOnCompleteListener(task -> {
                     showLoading(false);
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
+                        FirebaseUser user = firebaseManager.getCurrentUser(); // Menggunakan FirebaseManager
                         if (user != null) {
                             user.sendEmailVerification()
                                     .addOnCompleteListener(verifyTask -> {
                                         if (verifyTask.isSuccessful()) {
                                             Toast.makeText(this, "Registrasi sukses! Cek email untuk verifikasi.", Toast.LENGTH_LONG).show();
-                                            // Simpan nama ke database (optional, Firestore/RealtimeDB)
-                                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
                                             String uid = user.getUid();
                                             User userData = new User(name, email);
 
-                                            db.collection("users").document(uid)
+                                            firebaseManager.getFirestore().collection("users").document(uid) // Menggunakan FirebaseManager
                                                     .set(userData)
                                                     .addOnSuccessListener(aVoid -> {
-                                                        Log.i("RegisterActivity", "Data user berhasil disimpan");
-                                                        // Redirect ke login
+                                                        Log.i("RegisterActivity", "Data user berhasil disimpan di Firestore.");
                                                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                                         finish();
                                                     })
                                                     .addOnFailureListener(e -> {
-                                                        Log.i("RegisterActivity", "Data user gagal disimpan");
+                                                        Log.e("RegisterActivity", "Data user gagal disimpan di Firestore: " + e.getMessage());
+                                                        Toast.makeText(this, "Registrasi sukses, tapi gagal menyimpan data user. Silakan coba login.", Toast.LENGTH_LONG).show();
+                                                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                                        finish();
                                                     });
                                         } else {
-                                            Toast.makeText(this, "Gagal mengirim email verifikasi.", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(this, "Gagal mengirim email verifikasi: " + verifyTask.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }

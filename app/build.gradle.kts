@@ -59,6 +59,4 @@ dependencies {
 
     implementation("androidx.core:core-ktx")
 
-    implementation(libs.circleimageview)
-
 }

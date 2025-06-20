@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    tools:context=".ResultFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hasil Strategi"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/card_result_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:background="@drawable/background_result_green">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="24dp">
+
+                <ImageView
+                    android:id="@+id/iv_result_avatar"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_illustration"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tv_result_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Strateginya cocok untuk mencapai mimpimu!🥳"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_result_avatar"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_total_needed_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_total_needed"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_result_status">
+
+            <ImageView
+                android:id="@+id/iv_total_needed_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_result1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_total_needed_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Total uang yang kamu butuhkan"
+                android:textColor="@color/palet2"
+                android:alpha="0.8"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/iv_total_needed_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_total_needed_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tv_total_needed_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_total_needed_label"
+                tools:text="Rp2,215,855,674" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_strategy_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="Strategimu"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_total_needed_container" />
+
+        <FrameLayout
+            android:id="@+id/card_strategy_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_strategy_title"
+            tools:background="@drawable/background_strategy_red">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="24dp"
+                android:paddingTop="16dp"
+                android:paddingRight="24dp"
+                android:paddingBottom="24dp">
+
+                <ImageView
+                    android:id="@+id/ic_current_funds"
+                    style="@style/StrategyIcon"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_current_funds_value"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_current_funds_label"
+                    tools:ignore="ContentDescription"
+                    android:src="@drawable/ic_result2"/>
+
+                <TextView
+                    android:id="@+id/tv_current_funds_label"
+                    style="@style/StrategyLabel"
+                    android:text="Uangmu saat ini"
+                    android:textColor="@color/palet2"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/ic_current_funds"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginLeft="12dp"/>
+
+                <TextView
+                    android:id="@+id/tv_current_funds_value"
+                    style="@style/StrategyValue"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_current_funds_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_current_funds_label"
+                    tools:text="Rp0" />
+
+                <View
+                    android:id="@+id/divider1"
+                    style="@style/StrategyDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_current_funds_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_current_funds_value" />
+
+                <ImageView
+                    android:id="@+id/ic_monthly_inv"
+                    style="@style/StrategyIcon"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_monthly_inv_value"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_monthly_inv_label"
+                    tools:ignore="ContentDescription"
+                    android:src="@drawable/ic_result3"/>
+
+                <TextView
+                    android:id="@+id/tv_monthly_inv_label"
+                    style="@style/StrategyLabel"
+                    android:text="Jumlah investasi / bulan"
+                    android:textColor="@color/palet2"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/ic_monthly_inv"
+                    app:layout_constraintTop_toBottomOf="@id/divider1"
+                    android:layout_marginLeft="12dp"/>
+
+                <TextView
+                    android:id="@+id/tv_monthly_inv_value"
+                    style="@style/StrategyValue"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_monthly_inv_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_monthly_inv_label"
+                    tools:text="Rp500,000" />
+
+                <View
+                    android:id="@+id/divider2"
+                    style="@style/StrategyDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_monthly_inv_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_monthly_inv_value" />
+
+                <ImageView
+                    android:id="@+id/ic_return"
+                    style="@style/StrategyIcon"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_return_value"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_return_label"
+                    tools:ignore="ContentDescription"
+                    android:src="@drawable/ic_result4"/>
+
+                <TextView
+                    android:id="@+id/tv_return_label"
+                    style="@style/StrategyLabel"
+                    android:text="Return investasi"
+                    android:textColor="@color/palet2"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/ic_return"
+                    app:layout_constraintTop_toBottomOf="@id/divider2"
+                    android:layout_marginLeft="12dp"/>
+
+                <TextView
+                    android:id="@+id/tv_return_value"
+                    style="@style/StrategyValue"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_return_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_return_label"
+                    tools:text="10% / Tahun" />
+
+                <View
+                    android:id="@+id/divider3"
+                    style="@style/StrategyDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_return_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_return_value" />
+
+                <ImageView
+                    android:id="@+id/ic_duration"
+                    style="@style/StrategyIcon"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_duration_value"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_duration_label"
+                    tools:ignore="ContentDescription"
+                    android:src="@drawable/ic_result5"/>
+
+                <TextView
+                    android:id="@+id/tv_duration_label"
+                    style="@style/StrategyLabel"
+                    android:text="Lama investasi"
+                    android:textColor="@color/palet2"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/ic_duration"
+                    app:layout_constraintTop_toBottomOf="@id/divider3"
+                    android:layout_marginLeft="12dp"/>
+
+                <TextView
+                    android:id="@+id/tv_duration_value"
+                    style="@style/StrategyValue"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_duration_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_duration_label"
+                    tools:text="39 Tahun" />
+
+                <View
+                    android:id="@+id/divider4"
+                    style="@style/StrategyDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_duration_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_duration_value" />
+
+                <ImageView
+                    android:id="@+id/ic_result"
+                    style="@style/StrategyIcon"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_result_value"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_result_label"
+                    tools:ignore="ContentDescription"
+                    android:src="@drawable/ic_result6"/>
+
+                <TextView
+                    android:id="@+id/tv_result_label"
+                    style="@style/StrategyLabel"
+                    android:text="Hasil investasi"
+                    android:textColor="@color/palet2"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/ic_result"
+                    app:layout_constraintTop_toBottomOf="@id/divider4"
+                    android:layout_marginLeft="12dp"/>
+
+                <TextView
+                    android:id="@+id/tv_result_value"
+                    style="@style/StrategyValue"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_result_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_result_label"
+                    tools:text="Rp2,880,435,722" />
+
+                <TextView
+                    android:id="@+id/tv_shortfall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/palet2"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@id/tv_result_value"
+                    app:layout_constraintTop_toBottomOf="@id/tv_result_value"
+                    tools:text="Kurang Rp13,846,217,529,480"
+                    tools:visibility="visible" />
+
+                <View
+                    android:id="@+id/divider5"
+                    style="@style/StrategyDivider"
+                    app:layout_constraintBottom_toTopOf="@id/tv_breakdown_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_result_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_shortfall" />
+
+                <ImageView
+                    android:id="@+id/ic_breakdown"
+                    style="@style/StrategyIcon"
+                    app:layout_constraintBottom_toBottomOf="@id/layout_breakdown_values"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_breakdown_label"
+                    tools:ignore="ContentDescription"
+                    android:src="@drawable/ic_result7"/>
+
+                <TextView
+                    android:id="@+id/tv_breakdown_label"
+                    style="@style/StrategyLabel"
+                    android:text="Breakdown"
+                    android:textColor="@color/palet2"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/ic_breakdown"
+                    app:layout_constraintTop_toBottomOf="@id/divider5"
+                    android:layout_marginLeft="12dp"/>
+
+                <LinearLayout
+                    android:id="@+id/progress_bar_container"
+                    android:layout_width="0dp"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_breakdown_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_breakdown_label">
+
+                    <View
+                        android:id="@+id/progress_principal"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="40"
+                        android:background="@drawable/progress_bar_principal_start" />
+
+                    <View
+                        android:id="@+id/progress_interest"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="60"
+                        android:background="@drawable/progress_bar_interest_end" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_breakdown_values"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/progress_bar_container"
+                    app:layout_constraintTop_toBottomOf="@id/progress_bar_container">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline_40"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.4" />
+
+                    <TextView
+                        android:id="@+id/tv_principal_marker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="^"
+                        android:textColor="@color/grey_text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_principal_value"
+                        style="@style/BreakdownValue"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_principal_marker"
+                        tools:text="Rp234,000,000" />
+
+                    <TextView
+                        android:id="@+id/tv_principal_text_label"
+                        style="@style/BreakdownLabel"
+                        android:text="Pokok investasi"
+                        android:textColor="@color/palet2"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_principal_value" />
+
+
+                    <TextView
+                        android:id="@+id/tv_interest_marker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="^"
+                        android:textColor="@color/grey_text"
+                        app:layout_constraintStart_toStartOf="@id/guideline_40"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_interest_value"
+                        style="@style/BreakdownValue"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/guideline_40"
+                        app:layout_constraintTop_toBottomOf="@id/tv_interest_marker"
+                        tools:text="Rp2,646,435,722" />
+
+                    <TextView
+                        android:id="@+id/tv_interest_text_label"
+                        style="@style/BreakdownLabel"
+                        android:text="Bunga investasi"
+                        android:textColor="@color/palet2"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/guideline_40"
+                        app:layout_constraintTop_toBottomOf="@id/tv_interest_value" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -15,7 +15,8 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/background_back_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/iv_back_button_icon"
@@ -26,13 +27,14 @@
         app:layout_constraintEnd_toEndOf="@id/iv_back_button_bg"
         app:layout_constraintStart_toStartOf="@id/iv_back_button_bg"
         app:layout_constraintTop_toTopOf="@id/iv_back_button_bg"
-        app:tint="@color/white" />
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tv_toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Daftar Pengguna"
+        android:text="Profil Saya"
         android:textColor="@android:color/white"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -41,35 +43,183 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/iv_back_button_bg" />
 
+    <ImageView
+        android:id="@+id/btn_edit_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:padding="12dp"
+        android:src="@drawable/ic_edit"
+        app:tint="@color/white"
+        android:gravity="center"
+        android:paddingHorizontal="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_back_button_bg"
+        app:layout_constraintBottom_toBottomOf="@id/iv_back_button_bg"/>
+    />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_user_profiles"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
         android:clipToPadding="false"
+        android:fillViewport="true"
         android:paddingBottom="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_action_buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_toolbar_title"
-        tools:listitem="@layout/item_user_profile" />
+        app:layout_constraintTop_toBottomOf="@id/iv_back_button_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/background_card_red"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_profile_picture"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="8dp"
+                android:background="#DEDEDE"
+                android:src="@drawable/ic_person"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView"
+                app:tint="#8A8A8A" />
+
+            <TextView
+                android:id="@+id/tv_change_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="Ubah Foto"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/GoalTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:hint="Nama Lengkap">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_full_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    tools:text="John Doe"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/GoalTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:enabled="false"
+                    tools:text="johndoe@example.com"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password"
+                style="@style/GoalTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Kata Sandi"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@android:color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:enabled="false"
+                    tools:text="12345678"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 
-    <!-- =================================================================== -->
-    <!-- Tombol Tambah (Floating Action Button) -->
-    <!-- =================================================================== -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_profile"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layout_action_buttons"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:src="@drawable/ic_add"
-        app:backgroundTint="@color/palet2"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@android:color/white" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/layout_edit_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_cancel"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:paddingVertical="14dp"
+                android:text="Batal"
+                android:textAllCaps="false"
+                android:textColor="@color/palet2"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/white"
+                android:backgroundTint="@color/white"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/palet2"
+                android:paddingVertical="14dp"
+                android:text="Simpan"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_logout"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="14dp"
+            android:text="Keluar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:backgroundTint="@color/palet12"
+            app:cornerRadius="12dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

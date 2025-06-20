@@ -17,6 +17,17 @@
 
     <color name="white">#FFFFFF</color>
     <color name="active_red">#FF5722</color>
-    <color name="inactive_gray">#757575</color> ```
+    <color name="inactive_gray">#757575</color>
+
+    <color name="green_bg">#C8E6C9</color>
+    <color name="green_card_bg">#E8F5E9</color> <color name="green_text">#1B5E20</color>
+
+    <color name="red_bg">#FFCDD2</color>
+    <color name="red_card_bg">#FFEBEE</color> <color name="red_text">#D32F2F</color>
+
+    <color name="grey_text">#757575</color>
+    <color name="divider_color">#E0E0E0</color>
+    <color name="progress_principal_color">#00ACC1</color> <color name="progress_interest_color">#4DD0E1</color> <color name="total_needed_bg">#F4A299</color>
+    <color name="total_needed_text">#A52F22</color>
 
 </resources>

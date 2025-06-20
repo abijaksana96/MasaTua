@@ -106,7 +106,7 @@
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lupa Password?"
+        android:text="Lupa Kata Sandi?"
         android:textColor="@color/palet1"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@id/passwordInput"

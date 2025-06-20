@@ -16,21 +16,16 @@
     <!-- =================================================== -->
     <!-- Style BARU untuk TextInputLayout -->
     <!-- =================================================== -->
-    <style name="GoalTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
-        <!-- Mengatur warna background field -->
+    <style name="GoalTextInputLayout" parent="Widget.Material3.TextInputLayout.FilledBox">
         <item name="boxBackgroundColor">@android:color/white</item>
 
-        <!-- Menghilangkan garis bawah -->
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
 
-        <!-- Mengatur warna hint/label saat tidak di-fokus (putih) -->
         <item name="android:textColorHint">@android:color/black</item>
 
-        <!-- Mengatur warna hint/label saat di-fokus (juga putih) -->
         <item name="hintTextColor">@android:color/white</item>
 
-        <!-- Mengatur bentuk sudut -->
         <item name="shapeAppearanceOverlay">@style/GoalShapeAppearance</item>
     </style>
 
@@ -49,4 +44,119 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+
+    <style name="CalculatorLabel" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">#1E293B</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CalculatorInputContainer" parent="Widget.AppCompat.LinearLayout.Horizontal">
+        <item name="android:background">@drawable/background_input_field</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">4dp</item>
+    </style>
+
+    <style name="CalculatorResultContainer" parent="CalculatorInputContainer">
+        <item name="android:background">@drawable/background_result_field</item>
+    </style>
+
+    <style name="CalculatorEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">#0F172A</item>
+        <item name="android:textColorHint">#94A3B8</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">textEnd</item>
+    </style>
+
+    <style name="CalculatorResultText" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">#0F172A</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">textEnd</item>
+    </style>
+
+    <style name="CalculatorResultTextWhite" parent="CalculatorResultText">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="CalculatorCurrency" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#94A3B8</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+    </style>
+
+    <style name="CalculatorCurrencyWhite" parent="CalculatorCurrency">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="CalculatorUnit" parent="CalculatorCurrency">
+        <item name="android:textColor">#0F172A</item>
+    </style>
+
+    <style name="CalculatorHelpIcon" parent="Widget.AppCompat.ImageView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+    </style>
+
+    <style name="CalculatorHelpIconWhite" parent="CalculatorHelpIcon">
+        <item name="app:tint">@android:color/white</item>
+    </style>
+
+    <style name="StrategyIcon">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:background">@drawable/ic_square_placeholder</item>
+    </style>
+
+    <style name="StrategyLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#757575</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="StrategyValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StrategyDivider">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#EEEEEE</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="BreakdownValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="BreakdownLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#757575</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
 </resources>

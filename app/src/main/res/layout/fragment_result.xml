@@ -473,9 +473,62 @@
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@id/guideline_40"
                         app:layout_constraintTop_toBottomOf="@id/tv_interest_value" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_cta_new_strategy" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp" android:layout_marginTop="24dp"
+            android:background="@drawable/background_cta"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/card_strategy_details"> <TextView
+            android:id="@+id/tv_cta_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/palet13"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@id/card_cta_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Yay, Strategimu cocok."
+            android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_cta_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Ayo Atur Target Kamu" android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/card_cta_arrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_cta_subtitle" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_cta_arrow"
+                android:layout_width="48dp"
+                android:layout_height="0dp"
+                app:cardBackgroundColor="#FDE68A"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_goals"
+                    app:tint="@color/palet6"
+                    tools:ignore="ContentDescription" />
+
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -519,6 +519,7 @@
                     android:text="Yay, mimpimu sudah jauh lebih nyata."
                     android:textColor="@color/palet13"
                     android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@id/card_cta_arrow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -555,7 +556,6 @@
                         app:tint="@color/palet6" />
 
                 </com.google.android.material.card.MaterialCardView>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

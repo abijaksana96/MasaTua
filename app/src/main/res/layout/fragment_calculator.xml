@@ -359,7 +359,7 @@
                     tools:text="3,379,194,582" />
 
                 <ImageView
-                    style="@style/CalculatorHelpIconWhite"
+                    style="@style/CalculatorHelpIcon"
                     android:src="@drawable/ic_question_mark" />
             </LinearLayout>
 

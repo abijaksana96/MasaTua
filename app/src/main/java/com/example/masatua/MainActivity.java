@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         // region Set HomeFragment
         if (savedInstanceState == null) {
-            loadTopLevelFragment(new ProfileFragment(), "HomeFragment"); // TODO : Ganti jadi HomeFragment
+            loadTopLevelFragment(new HomeFragment(), "HomeFragment");
             binding.bottomNavigation.setSelectedItemId(R.id.nav_home);
         }
         // endregion
@@ -53,10 +53,11 @@ public class MainActivity extends AppCompatActivity {
             String tag = null;
 
             if (item.getItemId() == R.id.nav_home) {
-                selectedFragment = new GoalsListFragment();
-                tag = "GoalsListFragment";
+                selectedFragment = new HomeFragment();
+                tag = "HomeFragment";
             } else if (item.getItemId() == R.id.nav_calculator) {
-                // TODO : Tambah calculator fragment
+                selectedFragment = new CalculatorFragment();
+                tag = "CalculatorFragment";
             } else if (item.getItemId() == R.id.nav_goals) {
                 selectedFragment = new GoalsListFragment();
                 tag = "GoalsListFragment";
@@ -66,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (selectedFragment != null && !selectedFragment.getClass().equals(activeFragment.getClass())) {
-                // Gunakan metode BARU `loadTopLevelFragment` untuk navigasi utama
                 loadTopLevelFragment(selectedFragment, tag);
                 return true;
             }

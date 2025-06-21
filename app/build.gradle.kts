@@ -56,7 +56,9 @@ dependencies {
 
     // Firestore
     implementation("com.google.firebase:firebase-firestore")
+    implementation ("com.firebaseui:firebase-ui-firestore:8.0.2")
 
     implementation("androidx.core:core-ktx")
+    implementation("androidx.appcompat:appcompat:1.6.1")
 
 }

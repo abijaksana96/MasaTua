@@ -3,6 +3,7 @@ package com.example.masatua;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -15,20 +16,19 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.masatua.databinding.ActivityLoginBinding;
 import com.example.masatua.models.User;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.masatua.utils.FirebaseManager; // Import FirebaseManager
+
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
-    private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
+    private FirebaseManager firebaseManager; // Gunakan FirebaseManager
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
 
-        // Setup binding
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -38,11 +38,15 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        // region LOGIC
+        // Inisialisasi FirebaseManager
+        firebaseManager = FirebaseManager.getInstance();
 
-        // region login logic
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+        // Check if user is already logged in and verified
+        FirebaseUser currentUser = firebaseManager.getCurrentUser();
+        if (currentUser != null && currentUser.isEmailVerified()) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
 
         binding.signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,27 +54,20 @@ public class LoginActivity extends AppCompatActivity {
                 loginUser();
             }
         });
-        // endregion
 
-        // region "login disini" logic
         binding.signupLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
-        // endregion
 
-        // region fogot password logic
         binding.forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resetPassword();
             }
         });
-        // endregion
-
-        // endregion
     }
 
     private void loginUser() {
@@ -88,50 +85,23 @@ public class LoginActivity extends AppCompatActivity {
 
         showLoading(true);
 
-        mAuth.signInWithEmailAndPassword(email, password)
+        firebaseManager.getAuth().signInWithEmailAndPassword(email, password) // Menggunakan FirebaseManager
                 .addOnCompleteListener(task -> {
                     showLoading(false);
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
+                        FirebaseUser user = firebaseManager.getCurrentUser(); // Menggunakan FirebaseManager
                         if (user != null && user.isEmailVerified()) {
-                            // Ambil data user dari Firestore setelah login sukses
-                            fetchUserData(user.getUid());
+                            Log.d("LoginActivity", "User logged in and email verified. UID: " + user.getUid());
+                            Toast.makeText(this, "Login Berhasil!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
                         } else {
+                            firebaseManager.signOutUser(); // Menggunakan FirebaseManager
                             Toast.makeText(this, "Email belum diverifikasi. Cek inbox email Anda.", Toast.LENGTH_LONG).show();
                         }
                     } else {
                         Toast.makeText(this, "Login gagal: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
-                });
-    }
-
-    private void fetchUserData(String uid) {
-        db.collection("users").document(uid)
-                .get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.exists()) {
-                        User userData = documentSnapshot.toObject(User.class);
-                        if (userData != null) {
-                            // Contoh: akses nama & email
-                            String name = userData.name;
-                            String email = userData.email;
-
-                            // TODO: simpan info ke SharedPreferences/global variable, atau langsung lanjut ke MainActivity
-                            Toast.makeText(this, "Welcome, " + name, Toast.LENGTH_SHORT).show();
-
-                            // Contoh lanjut ke MainActivity
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra("user_name", name);
-                            intent.putExtra("user_email", email);
-                            startActivity(intent);
-                            finish();
-                        }
-                    } else {
-                        Toast.makeText(this, "Data user tidak ditemukan di database.", Toast.LENGTH_LONG).show();
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Gagal mengambil data user: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
     }
 
@@ -142,8 +112,11 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        mAuth.sendPasswordResetEmail(email)
+        showLoading(true);
+
+        firebaseManager.getAuth().sendPasswordResetEmail(email) // Menggunakan FirebaseManager
                 .addOnCompleteListener(task -> {
+                    showLoading(false);
                     if (task.isSuccessful()) {
                         Toast.makeText(this, "Link reset password telah dikirim ke email.", Toast.LENGTH_LONG).show();
                     } else {

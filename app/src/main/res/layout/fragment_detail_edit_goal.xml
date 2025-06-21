@@ -232,63 +232,72 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Tombol untuk Mode DETAIL (Defaultnya tersembunyi) -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_edit_goals"
+        <FrameLayout
+            android:id="@+id/bottom_button_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/palet2"
-            android:paddingVertical="14dp"
-            android:text="Edit Target"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            app:cornerRadius="12dp"
-            android:visibility="gone"
-            tools:visibility="visible"/>
-
-        <!-- Tombol untuk Mode EDIT (Defaultnya tersembunyi) -->
-        <LinearLayout
-            android:id="@+id/container_edit_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            tools:visibility="gone">
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_delete"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="0dp"
+                android:id="@+id/btn_edit_goals"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:paddingVertical="14dp"
-                android:text="Hapus"
-                android:textColor="@color/white"
-                app:cornerRadius="12dp"
-                app:strokeColor="@color/white"
-                app:strokeWidth="2dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_save"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
                 android:backgroundTint="@color/palet2"
                 android:paddingVertical="14dp"
-                android:text="Simpan"
+                android:text="Edit Target"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
-                app:cornerRadius="12dp" />
-        </LinearLayout>
+                app:cornerRadius="12dp"
+                android:visibility="visible"
+                tools:visibility="visible"/>
+
+            <LinearLayout
+                android:id="@+id/container_edit_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:paddingVertical="14dp"
+                    android:text="Batal"
+                    android:textSize="18sp"
+                    android:textColor="@color/palet2"
+                    app:cornerRadius="12dp"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/white"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_save"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/palet2"
+                    android:paddingVertical="14dp"
+                    android:text="Simpan"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    app:cornerRadius="12dp" />
+            </LinearLayout>
+
+        </FrameLayout>
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

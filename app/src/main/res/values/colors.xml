@@ -21,6 +21,8 @@
 
     <color name="green_bg">#C8E6C9</color>
     <color name="green_card_bg">#E8F5E9</color> <color name="green_text">#1B5E20</color>
+    <color name="green_button_color">#4CAF50</color>
+    <color name="red_text">#F44336</color>
 
     <color name="red_bg">#FFCDD2</color>
     <color name="red_card_bg">#FFEBEE</color> <color name="red_text">#D32F2F</color>

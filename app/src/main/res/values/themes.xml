@@ -1,8 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.MasaTua" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.MasaTua" parent="Base.Theme.MasaTua" />
@@ -13,30 +10,20 @@
         <item name="android:background">@drawable/active_nav_indicator_background</item>
     </style>
 
-    <!-- =================================================== -->
-    <!-- Style BARU untuk TextInputLayout -->
-    <!-- =================================================== -->
     <style name="GoalTextInputLayout" parent="Widget.Material3.TextInputLayout.FilledBox">
         <item name="boxBackgroundColor">@android:color/white</item>
-
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
-
         <item name="android:textColorHint">@android:color/black</item>
-
         <item name="hintTextColor">@android:color/white</item>
-
         <item name="shapeAppearanceOverlay">@style/GoalShapeAppearance</item>
     </style>
 
-    <!-- Style bantuan untuk mengatur sudut -->
-    <style name="GoalShapeAppearance" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+    <style name="GoalShapeAppearance" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">16dp</item> <!-- Sesuaikan radius sudut di sini -->
-    </style>
+        <item name="cornerSize">16dp</item> </style>
 
-    <!-- Style untuk Progress Bar -->
-    <style name="GoalProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+    <style name="GoalProgressBar" parent="Widget.Material3.LinearProgressIndicator">
         <item name="android:progressDrawable">@drawable/custom_progress_bar</item>
     </style>
 
@@ -45,7 +32,7 @@
         <item name="cornerSize">50%</item>
     </style>
 
-    <style name="CalculatorLabel" parent="Widget.AppCompat.TextView">
+    <style name="CalculatorLabel" parent="Widget.Material3.TextView">
         <item name="android:textColor">#1E293B</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
@@ -55,15 +42,17 @@
         <item name="android:background">@drawable/background_input_field</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingHorizontal">16dp</item>
-        <item name="android:paddingVertical">4dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
     </style>
 
     <style name="CalculatorResultContainer" parent="CalculatorInputContainer">
         <item name="android:background">@drawable/background_result_field</item>
     </style>
 
-    <style name="CalculatorEditText" parent="Widget.AppCompat.EditText">
+    <style name="CalculatorEditText" parent="Widget.Material3.TextInputEditText">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
@@ -75,13 +64,10 @@
         <item name="android:textAlignment">textEnd</item>
     </style>
 
-    <style name="CalculatorResultText" parent="Widget.AppCompat.TextView">
+    <style name="CalculatorResultText" parent="CalculatorLabel">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textColor">#0F172A</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">textEnd</item>
     </style>
 
@@ -89,7 +75,7 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="CalculatorCurrency" parent="Widget.AppCompat.TextView">
+    <style name="CalculatorCurrency" parent="Widget.Material3.TextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#94A3B8</item>
@@ -157,6 +143,5 @@
         <item name="android:textColor">#757575</item>
         <item name="android:textSize">12sp</item>
     </style>
-
 
 </resources>

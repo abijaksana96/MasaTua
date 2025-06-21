@@ -9,7 +9,6 @@
     android:background="@drawable/background_card_red"
     android:padding="20dp">
 
-    <!-- Judul Goal (Dibuat lebih besar) -->
     <TextView
         android:id="@+id/tv_goal_title"
         android:layout_width="0dp"
@@ -18,14 +17,13 @@
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/card_edit_icon_container"
+        app:layout_constraintEnd_toStartOf="@id/card_delete_icon_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Dana Pensiun Kakek" />
 
-    <!-- Wadah Ikon Edit dengan Background Kotak Putih -->
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_edit_icon_container"
+        android:id="@+id/card_delete_icon_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@android:color/white"
@@ -35,29 +33,28 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iv_edit_icon"
+            android:id="@+id/iv_delete_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_edit"
-            app:tint="@color/black" />
+            android:padding="3dp"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/black"
+            tools:ignore="ContentDescription" />
 
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Label "Progress" (Dibuat lebih redup) -->
     <TextView
         android:id="@+id/tv_progress_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Kemajuan"
-        android:textStyle="bold"
         android:textColor="#F5CACA"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_goal_title" />
 
-    <!-- Wadah untuk Progress Bar dan Teks Persentase -->
     <FrameLayout
         android:id="@+id/progress_container"
         android:layout_width="match_parent"
@@ -85,7 +82,6 @@
 
     </FrameLayout>
 
-    <!-- Teks Deskripsi Dana -->
     <TextView
         android:id="@+id/tv_fund_description"
         android:layout_width="0dp"
@@ -96,27 +92,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/progress_container"
-        tools:text="Dana Saat Ini : Rp.10.000.000 Dari Target Rp.5.000.000"
-        />
+        tools:text="Dana Saat Ini : Rp.10.000.000 Dari Target Rp.5.000.000" />
 
 
-
-    <!-- Tombol Lihat Detail (Warna disesuaikan) -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_see_detail"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_add_investment"
+        style="@style/GoalTextInputLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/palet2"
-        android:minHeight="0dp"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="12dp"
-        android:text="Lihat Detail"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Tambah Investasi (Rp)"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_send_investment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_fund_description">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_add_investment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_send_investment"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/green_button_color"
+        android:text="Kirim"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="14sp"
-        app:cornerRadius="16dp"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/til_add_investment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_fund_description" />
+        app:layout_constraintTop_toTopOf="@id/til_add_investment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

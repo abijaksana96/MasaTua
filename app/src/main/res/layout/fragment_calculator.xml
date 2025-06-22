@@ -165,13 +165,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Pengeluaran / tahun" />
+                android:text="Pengeluaran / tahun"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/layout_expense_yearly"
                 style="@style/CalculatorResultContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/CalculatorCurrency"
@@ -192,7 +194,8 @@
                 android:id="@+id/layout_info_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="24dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_illustration_2"
@@ -225,13 +228,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Usiamu sekarang" />
+                android:text="Usiamu sekarang"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/layout_age_now"
                 style="@style/CalculatorInputContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/et_age_now"
@@ -254,13 +259,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Kamu ingin pensiun di usia" />
+                android:text="Kamu ingin pensiun di usia"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/layout_retirement_age"
                 style="@style/CalculatorInputContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/et_retirement_age"
@@ -283,13 +290,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Asumsi inflasi tahunan" />
+                android:text="Asumsi inflasi tahunan"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/layout_inflation_rate"
                 style="@style/CalculatorInputContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/et_inflation_rate"
@@ -312,13 +321,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Pengeluaran tahunan saat mulai pensiun nanti" />
+                android:text="Pengeluaran tahunan saat mulai pensiun nanti"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/layout_expense_yearly_retirement"
                 style="@style/CalculatorResultContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/CalculatorCurrency"
@@ -340,14 +351,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Uang yang kamu butuhkan berdasarkan 4% rule" />
+                android:text="Uang yang kamu butuhkan berdasarkan 4% rule"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/layout_total_needed"
                 style="@style/CalculatorResultContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_result_green">
+                android:background="@drawable/background_result_green"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/CalculatorCurrencyWhite"
@@ -368,7 +381,8 @@
                 android:id="@+id/layout_info_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="24dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_illustration_3"
@@ -401,13 +415,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Dana pensiun yang telah tersedia sampai saat ini" />
+                android:text="Dana pensiun yang telah tersedia sampai saat ini"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/layout_existing_funds"
                 style="@style/CalculatorInputContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/CalculatorCurrency"
@@ -425,18 +441,51 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_monthly_investment_needed_label"
+                style="@style/CalculatorLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Target investasimu tiap bulan"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/layout_monthly_investment_needed"
+                style="@style/CalculatorResultContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/CalculatorCurrency"
+                    android:text="Rp" />
+
+                <EditText
+                    android:id="@+id/et_monthly_investment"
+                    style="@style/CalculatorEditText"
+                    android:hint="0"
+                    android:inputType="numberDecimal" />
+
+                <ImageView
+                    style="@style/CalculatorHelpIcon"
+                    android:src="@drawable/ic_question_mark" />
+            </LinearLayout>
+
+            <TextView
                 android:id="@+id/tv_investment_return_label"
                 style="@style/CalculatorLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Target return investasi per tahun" />
+                android:text="Target return investasi per tahun"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/layout_investment_return"
                 style="@style/CalculatorInputContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/et_investment_return"
@@ -454,46 +503,20 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_monthly_investment_needed_label"
-                style="@style/CalculatorLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Target investasimu tiap bulan" />
-
-            <LinearLayout
-                android:id="@+id/layout_monthly_investment_needed"
-                style="@style/CalculatorResultContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/CalculatorCurrency"
-                    android:text="Rp" />
-
-                <TextView
-                    android:id="@+id/tv_monthly_investment_needed"
-                    style="@style/CalculatorResultText"
-                    tools:text="1,114,834" />
-
-                <ImageView
-                    style="@style/CalculatorHelpIcon"
-                    android:src="@drawable/ic_question_mark" />
-            </LinearLayout>
-
-            <TextView
                 android:id="@+id/tv_age_needed_label"
                 style="@style/CalculatorLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Kamu akan pensiun dalam" />
+                android:text="Kamu akan pensiun dalam"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/layout_age_needed"
                 style="@style/CalculatorResultContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_age_needed"
@@ -509,7 +532,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/background_cta"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_cta_subtitle"

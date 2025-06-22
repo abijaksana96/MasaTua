@@ -86,6 +86,7 @@ public class ResultFragment extends Fragment {
                 binding.tvResultValue.setText("Rp" + numberFormat.format(total));
                 binding.tvShortfall.setVisibility(View.VISIBLE);
                 binding.tvShortfall.setText("Kurang Rp" + numberFormat.format(kurang));
+                binding.layoutCtaNewStrategy.setVisibility(View.GONE);
             } else {
                 binding.cardResultStatus.setBackgroundResource(R.drawable.background_result_green);
                 binding.ivResultAvatar.setImageResource(R.drawable.ic_illustration);
@@ -97,6 +98,7 @@ public class ResultFragment extends Fragment {
                 binding.tvDurationValue.setText(tahun + " tahun");
                 binding.tvResultValue.setText("Rp" + numberFormat.format(total));
                 binding.tvShortfall.setVisibility(View.GONE);
+                binding.layoutCtaNewStrategy.setVisibility(View.VISIBLE);
             }
         }
 

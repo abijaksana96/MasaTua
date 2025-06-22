@@ -67,9 +67,17 @@ public class CalculatorFragment extends Fragment {
                     binding.layoutInflationRate.setVisibility(View.GONE);
                     binding.tvExpenseYearlyRetirementLabel.setVisibility(View.GONE);
                     binding.layoutExpenseYearlyRetirement.setVisibility(View.GONE);
+                    binding.tvMonthlyInvestmentNeededLabel.setVisibility(View.GONE);
+                    binding.layoutMonthlyInvestmentNeeded.setVisibility(View.GONE);
+                    binding.tvInvestmentReturnLabel.setVisibility(View.GONE);
+                    binding.layoutInvestmentReturn.setVisibility(View.GONE);
+                    binding.tvAgeNeededLabel.setVisibility(View.GONE);
+                    binding.layoutAgeNeeded.setVisibility(View.GONE);
                     binding.etAgeNow.setText("");
                     binding.etRetirementAge.setText("");
                     binding.etInflationRate.setText("");
+                    binding.etMonthlyInvestment.setText("");
+                    binding.etInvestmentReturn.setText("");
                     isBulkProgrammaticChange = false;
                     return;
                 }
@@ -90,9 +98,17 @@ public class CalculatorFragment extends Fragment {
                     binding.layoutInflationRate.setVisibility(View.GONE);
                     binding.tvExpenseYearlyRetirementLabel.setVisibility(View.GONE);
                     binding.layoutExpenseYearlyRetirement.setVisibility(View.GONE);
+                    binding.tvMonthlyInvestmentNeededLabel.setVisibility(View.GONE);
+                    binding.layoutMonthlyInvestmentNeeded.setVisibility(View.GONE);
+                    binding.tvInvestmentReturnLabel.setVisibility(View.GONE);
+                    binding.layoutInvestmentReturn.setVisibility(View.GONE);
+                    binding.tvAgeNeededLabel.setVisibility(View.GONE);
+                    binding.layoutAgeNeeded.setVisibility(View.GONE);
                     binding.etAgeNow.setText("");
                     binding.etRetirementAge.setText("");
                     binding.etInflationRate.setText("");
+                    binding.etMonthlyInvestment.setText("");
+                    binding.etInvestmentReturn.setText("");
                     isBulkProgrammaticChange = false;
                     return;
                 }
@@ -133,9 +149,17 @@ public class CalculatorFragment extends Fragment {
                         binding.layoutInflationRate.setVisibility(View.GONE);
                         binding.tvExpenseYearlyRetirementLabel.setVisibility(View.GONE);
                         binding.layoutExpenseYearlyRetirement.setVisibility(View.GONE);
+                        binding.tvMonthlyInvestmentNeededLabel.setVisibility(View.GONE);
+                        binding.layoutMonthlyInvestmentNeeded.setVisibility(View.GONE);
+                        binding.tvInvestmentReturnLabel.setVisibility(View.GONE);
+                        binding.layoutInvestmentReturn.setVisibility(View.GONE);
+                        binding.tvAgeNeededLabel.setVisibility(View.GONE);
+                        binding.layoutAgeNeeded.setVisibility(View.GONE);
                         binding.etAgeNow.setText("");
                         binding.etRetirementAge.setText("");
                         binding.etInflationRate.setText("");
+                        binding.etMonthlyInvestment.setText("");
+                        binding.etInvestmentReturn.setText("");
                         isBulkProgrammaticChange = false;
                     }
                 } catch (NumberFormatException e) {

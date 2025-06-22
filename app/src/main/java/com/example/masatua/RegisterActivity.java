@@ -19,6 +19,7 @@ import com.example.masatua.models.User;
 import com.example.masatua.utils.FirebaseManager; // Import FirebaseManager
 
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore; // Masih perlu import ini untuk tipe FirebaseFirestore saja
 
 public class RegisterActivity extends AppCompatActivity {
@@ -91,36 +92,40 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     showLoading(false);
                     if (task.isSuccessful()) {
-                        FirebaseUser user = firebaseManager.getCurrentUser(); // Menggunakan FirebaseManager
+                        FirebaseUser user = firebaseManager.getCurrentUser();
                         if (user != null) {
-                            user.sendEmailVerification()
-                                    .addOnCompleteListener(verifyTask -> {
-                                        if (verifyTask.isSuccessful()) {
-                                            Toast.makeText(this, "Registrasi sukses! Cek email untuk verifikasi.", Toast.LENGTH_LONG).show();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(name)
+                                    .build();
+                            user.updateProfile(profileUpdates)
+                                    .addOnCompleteListener(profileTask -> {
+                                        user.sendEmailVerification()
+                                                .addOnCompleteListener(verifyTask -> {
+                                                    if (verifyTask.isSuccessful()) {
+                                                        Toast.makeText(this, "Registrasi sukses! Cek email untuk verifikasi.", Toast.LENGTH_LONG).show();
 
-                                            String uid = user.getUid();
-                                            User userData = new User(name, email);
+                                                        String uid = user.getUid();
+                                                        User userData = new User(name, email);
 
-                                            firebaseManager.getFirestore().collection("users").document(uid) // Menggunakan FirebaseManager
-                                                    .set(userData)
-                                                    .addOnSuccessListener(aVoid -> {
-                                                        Log.i("RegisterActivity", "Data user berhasil disimpan di Firestore.");
-                                                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                                        finish();
-                                                    })
-                                                    .addOnFailureListener(e -> {
-                                                        Log.e("RegisterActivity", "Data user gagal disimpan di Firestore: " + e.getMessage());
-                                                        Toast.makeText(this, "Registrasi sukses, tapi gagal menyimpan data user. Silakan coba login.", Toast.LENGTH_LONG).show();
-                                                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                                        finish();
-                                                    });
-                                        } else {
-                                            Toast.makeText(this, "Gagal mengirim email verifikasi: " + verifyTask.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                        }
+                                                        firebaseManager.getFirestore().collection("users").document(uid)
+                                                                .set(userData)
+                                                                .addOnSuccessListener(aVoid -> {
+                                                                    Log.i("RegisterActivity", "Data user berhasil disimpan di Firestore.");
+                                                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                                                    finish();
+                                                                })
+                                                                .addOnFailureListener(e -> {
+                                                                    Log.e("RegisterActivity", "Data user gagal disimpan di Firestore: " + e.getMessage());
+                                                                    Toast.makeText(this, "Registrasi sukses, tapi gagal menyimpan data user. Silakan coba login.", Toast.LENGTH_LONG).show();
+                                                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                                                    finish();
+                                                                });
+                                                    } else {
+                                                        Toast.makeText(this, "Gagal mengirim email verifikasi: " + verifyTask.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
                                     });
                         }
-                    } else {
-                        Toast.makeText(this, "Registrasi gagal: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }

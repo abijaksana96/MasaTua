@@ -1,277 +1,342 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
+    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/dash_board"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Home"
+            android:textColor="#CD4135"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/night_mode"
+            android:layout_width="31dp"
+            android:layout_height="27dp"
+            android:src="@drawable/nightmode"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="20dp">
 
-            <TextView
-                android:id="@+id/dash_board"
-                android:layout_width="wrap_content"
+            <!-- USERNAME CARD (Tetap Ada Di Atas) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/urname_card"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Da$hboard"
-                android:textColor="#CD4135"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <ImageView
-                android:id="@+id/night_mode"
-                android:layout_width="31dp"
-                android:layout_height="27dp"
-                android:layout_marginStart="245dp"
-                android:src="@drawable/nightmode"/>
-
-        </LinearLayout>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/urname_card"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardCornerRadius="16dp"
-            app:cardBackgroundColor="#E15E52"
-            android:layout_marginTop="25dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="20dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hi,Namaku \nTasdik Bijaksana"
-                        android:textStyle="bold"
-                        android:textSize="25sp"
-                        android:paddingBottom="15dp"
-                        android:textColor="#FDF4F3"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#FCE6E4"
-                        android:textSize="10sp"
-                        android:text="Menyiapkan masa depan yang tenang, dimulai\ndari hari ini."/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:src="@drawable/icon1" />
-
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pantau progresmu hari ini!"
-            android:textColor="#CD4135"
-            android:layout_marginTop="15dp"/>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="336dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:cardBackgroundColor="#E15E52"
-            app:cardCornerRadius="16dp"
-            android:layout_gravity="center">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dana Pensiun Kakek"
-                    android:textColor="#FDF4F3"
-                    android:textStyle="bold"
-                    android:textSize="17sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="75% completed"
-                    android:textColor="#FDF4F3"
-                    android:textSize="15sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
-
-                <ProgressBar
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:max="100"
-                    android:progress="75"
-                    android:progressTint="@android:color/holo_red_dark" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="336dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:cardBackgroundColor="#E15E52"
-            app:cardCornerRadius="16dp"
-            android:layout_gravity="center">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dana Pensiun Istri"
-                    android:textColor="#FDF4F3"
-                    android:textStyle="bold"
-                    android:textSize="17sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="35% completed"
-                    android:textColor="#FDF4F3"
-                    android:textSize="15sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
-
-                <ProgressBar
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:max="100"
-                    android:progress="35"
-                    android:progressTint="@android:color/holo_red_dark"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="@color/white"
-            app:strokeColor="#E15E52"
-            android:layout_marginTop="20dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                app:cardCornerRadius="18dp"
+                app:cardBackgroundColor="#E15E52"
+                android:layout_marginTop="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:orientation="horizontal">
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hi, Namaku \nTasdik Bijaksana"
+                            android:textStyle="bold"
+                            android:textSize="25sp"
+                            android:paddingBottom="15dp"
+                            android:textColor="#FDF4F3"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FCE6E4"
+                            android:textSize="10sp"
+                            android:text="Yuk, belajar menabung untuk masa depan pensiun yang ceria!"/>
+
+                    </LinearLayout>
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="37dp"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/money_icon"/>
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon1" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 1: Apa Itu Dana Pensiun? -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#FFFDE7"
+                app:strokeColor="#FFD54F"
+                android:layout_marginTop="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Apa itu Dana Pensiun?"
-                        android:textSize="18sp"
-                        android:layout_margin="10dp"/>
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="#FFA000"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dana pensiun adalah tabungan khusus yang kamu siapkan supaya ketika sudah tua nanti, kamu tetap bisa hidup nyaman walaupun tidak bekerja lagi. Seperti menabung di celengan, tapi untuk masa depanmu!"
+                        android:textSize="15sp"
+                        android:textColor="#6D4C41"/>
 
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E15E52" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Seputar dana pensiun dari definisi hingga pengelolaannya."
-                    android:textSize="13sp"
-                    android:layout_margin="10dp"/>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="@color/white"
-            app:strokeColor="#E15E52"
-            android:layout_marginTop="20dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <!-- Card 2: Kenapa Harus Mulai Dari Kecil? -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#E3F2FD"
+                app:strokeColor="#2196F3"
+                android:layout_marginTop="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="37dp"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/managing_money"/>
+                    android:orientation="vertical"
+                    android:padding="18dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cara Mengolah Dana Pensiun"
-                        android:textSize="18sp"
-                        android:layout_margin="10dp"/>
+                        android:text="Kenapa Harus Mulai Dari Kecil?"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="#1976D2"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Semakin dini kamu menabung, semakin banyak uang yang bisa terkumpul. Ibarat menanam pohon: kalau kamu tanam dari kecil, nanti pohonmu bisa besar dan berbuah banyak!"
+                        android:textSize="15sp"
+                        android:textColor="#1565C0"/>
 
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E15E52" />
+            <!-- Card 3: Cara Mudah Menabung Untuk Pensiun -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#E8F5E9"
+                app:strokeColor="#388E3C"
+                android:layout_marginTop="16dp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mengolah dana pensiun dengan praktis dan efisien."
-                    android:textSize="13sp"
-                    android:layout_margin="10dp"/>
+                    android:orientation="vertical"
+                    android:padding="18dp">
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cara Mudah Menabung Untuk Pensiun"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="#388E3C"
+                        android:layout_marginBottom="8dp"/>
 
-    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sisihkan sebagian uang jajanmu setiap minggu atau bulan ke tabungan pensiunmu. Jika dilakukan terus-menerus, lama-lama tabunganmu akan bertambah banyak!"
+                        android:textSize="15sp"
+                        android:textColor="#388E3C"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 4: Apa Itu 4% Rule? -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#FFF3E0"
+                app:strokeColor="#FFB300"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Apa Itu 4% Rule?"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="#F57C00"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4% Rule itu aturan gampang: saat pensiun nanti, kamu boleh ambil 4% dari total tabungan pensiunmu setiap tahun supaya tabunganmu cukup dan tidak cepat habis."
+                        android:textSize="15sp"
+                        android:textColor="#F57C00"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 5: Simulasi Sederhana -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#FFFDE7"
+                app:strokeColor="#FFD54F"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Simulasi Sederhana"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="#FFA000"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Misal kamu ingin punya Rp 1 miliar saat pensiun. Kalau kamu mulai nabung sejak SD selama 40 tahun, cukup menabung Rp 2 juta per bulan (belum termasuk bunga lho!)."
+                        android:textSize="15sp"
+                        android:textColor="#6D4C41"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 6: Investasi Untuk Dana Pensiun -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#E3F2FD"
+                app:strokeColor="#2196F3"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Investasi Untuk Dana Pensiun"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="#1976D2"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Selain menabung di celengan, kamu juga bisa menabung di bank, membeli reksa dana, atau investasi lain yang aman dan sesuai umurmu. Pilih yang mudah dan diawasi OJK ya!"
+                        android:textSize="15sp"
+                        android:textColor="#1565C0"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 7: Jangan Takut Mulai! -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#E8F5E9"
+                app:strokeColor="#388E3C"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jangan Takut Mulai!"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="#388E3C"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mulai dari sedikit, yang penting rutin. Minta bantuan orangtua atau guru untuk belajar menabung dan investasi. Masa depanmu dimulai hari ini!"
+                        android:textSize="15sp"
+                        android:textColor="#388E3C"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

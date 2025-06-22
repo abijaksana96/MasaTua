@@ -162,7 +162,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_strategy_title"
-            tools:background="@drawable/background_strategy_red">
+            android:background="@drawable/background_strategy_red">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -347,133 +347,6 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_result_value"
                     tools:text="Kurang Rp13,846,217,529,480"
                     tools:visibility="visible" />
-
-                <View
-                    android:id="@+id/divider5"
-                    style="@style/StrategyDivider"
-                    app:layout_constraintBottom_toTopOf="@id/tv_breakdown_label"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/tv_result_label"
-                    app:layout_constraintTop_toBottomOf="@id/tv_shortfall" />
-
-                <ImageView
-                    android:id="@+id/ic_breakdown"
-                    style="@style/StrategyIcon"
-                    app:layout_constraintBottom_toBottomOf="@id/layout_breakdown_values"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_breakdown_label"
-                    tools:ignore="ContentDescription"
-                    android:src="@drawable/ic_result7"/>
-
-                <TextView
-                    android:id="@+id/tv_breakdown_label"
-                    style="@style/StrategyLabel"
-                    android:text="Breakdown"
-                    android:textColor="@color/palet2"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@id/ic_breakdown"
-                    app:layout_constraintTop_toBottomOf="@id/divider5"
-                    android:layout_marginLeft="12dp"/>
-
-                <LinearLayout
-                    android:id="@+id/progress_bar_container"
-                    android:layout_width="0dp"
-                    android:layout_height="12dp"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal"
-                    android:weightSum="100"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/tv_breakdown_label"
-                    app:layout_constraintTop_toBottomOf="@id/tv_breakdown_label">
-
-                    <View
-                        android:id="@+id/progress_principal"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="40"
-                        android:background="@drawable/progress_bar_principal_start" />
-
-                    <View
-                        android:id="@+id/progress_interest"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="60"
-                        android:background="@drawable/progress_bar_interest_end" />
-                </LinearLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_breakdown_values"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/progress_bar_container"
-                    app:layout_constraintTop_toBottomOf="@id/progress_bar_container">
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline_40"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.4" />
-
-                    <TextView
-                        android:id="@+id/tv_principal_marker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="^"
-                        android:textColor="@color/grey_text"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_principal_value"
-                        style="@style/BreakdownValue"
-                        android:layout_marginTop="2dp"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_principal_marker"
-                        tools:text="Rp234,000,000" />
-
-                    <TextView
-                        android:id="@+id/tv_principal_text_label"
-                        style="@style/BreakdownLabel"
-                        android:text="Pokok investasi"
-                        android:textColor="@color/palet2"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_principal_value" />
-
-
-                    <TextView
-                        android:id="@+id/tv_interest_marker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="^"
-                        android:textColor="@color/grey_text"
-                        app:layout_constraintStart_toStartOf="@id/guideline_40"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_interest_value"
-                        style="@style/BreakdownValue"
-                        android:layout_marginTop="2dp"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/guideline_40"
-                        app:layout_constraintTop_toBottomOf="@id/tv_interest_marker"
-                        tools:text="Rp2,646,435,722" />
-
-                    <TextView
-                        android:id="@+id/tv_interest_text_label"
-                        style="@style/BreakdownLabel"
-                        android:text="Bunga investasi"
-                        android:textColor="@color/palet2"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/guideline_40"
-                        app:layout_constraintTop_toBottomOf="@id/tv_interest_value" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

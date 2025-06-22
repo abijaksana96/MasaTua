@@ -95,7 +95,7 @@ public class GoalAdapter extends FirestoreRecyclerAdapter<Goal, GoalAdapter.View
             binding.tvFundDescription.setText(fundDescription);
 
             int percent = goal.getProgres();
-            if (percent >= 0 && percent <= 100) {
+            if (percent > 0) {
                 binding.progressBar.setProgress(percent);
                 binding.tvProgressPercentage.setText(percent + "%");
             } else {

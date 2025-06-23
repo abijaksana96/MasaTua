@@ -48,10 +48,10 @@ public class CalculatorFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (isBulkProgrammaticChange) return;
 
-                String cleanInput = s.toString().trim().replace(",", "").replace(".", "");
+                String inputStr = s.toString().trim();
 
                 // Jika kosong, reset field & tampilkan 0
-                if (cleanInput.isEmpty()) {
+                if (inputStr.isEmpty()) {
                     isBulkProgrammaticChange = true;
                     binding.tvExpenseYearly.setText("0");
                     binding.etExpenseMonthly.setError(null); // hilangkan error jika input kosong
@@ -82,8 +82,10 @@ public class CalculatorFragment extends Fragment {
                     return;
                 }
 
+                double inputDouble = parseIdNumber(inputStr);
+
                 // Jika hanya angka 0, error dan reset field
-                if (cleanInput.equals("0")) {
+                if (inputDouble == 0.0) {
                     isBulkProgrammaticChange = true;
                     binding.tvExpenseYearly.setText("0");
                     binding.etExpenseMonthly.setError("Angka harus lebih dari 0");
@@ -114,7 +116,6 @@ public class CalculatorFragment extends Fragment {
                 }
 
                 try {
-                    double inputDouble = Double.parseDouble(cleanInput);
                     if (inputDouble > 0) {
                         binding.etExpenseMonthly.setError(null);
                         binding.tvExpenseYearlyLabel.setVisibility(View.VISIBLE);
@@ -176,14 +177,15 @@ public class CalculatorFragment extends Fragment {
                 if (!s.toString().equals(current)) {
                     binding.etExpenseMonthly.removeTextChangedListener(this);
 
-                    String cleanString = s.toString().replaceAll("[^\\d]", "");
+                    // Hanya izinkan angka, koma, dan titik
+                    String cleanString = s.toString().replaceAll("[^\\d.,]", "");
                     if (cleanString.isEmpty()) {
                         current = "";
                         binding.etExpenseMonthly.setText("");
                         binding.etExpenseMonthly.addTextChangedListener(this);
                         return;
                     }
-                    double parsed = Double.parseDouble(cleanString);
+                    double parsed = parseIdNumber(cleanString);
 
                     // Format ke 1.000.000,00
                     String formatted = numberFormat.format(parsed);
@@ -293,43 +295,38 @@ public class CalculatorFragment extends Fragment {
         binding.etExistingFunds.addTextChangedListener(new TextWatcher() {
             private String current = "";
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String cleanInput = s.toString().trim().replace(",", "").replace(".", "");
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String inputStr = s.toString().trim();
 
-                if (cleanInput.isEmpty()) {
+                if (inputStr.isEmpty()) {
                     binding.tvMonthlyInvestmentNeededLabel.setVisibility(View.GONE);
                     binding.layoutMonthlyInvestmentNeeded.setVisibility(View.GONE);
                     return;
-                } else if (cleanInput.equals("0")) {
+                } else if (parseIdNumber(inputStr) == 0.0) {
                     binding.etExistingFunds.setError("Angka harus lebih dari 0");
                     return;
                 }
 
                 binding.tvMonthlyInvestmentNeededLabel.setVisibility(View.VISIBLE);
                 binding.layoutMonthlyInvestmentNeeded.setVisibility(View.VISIBLE);
-
             }
 
-            @Override
-            public void afterTextChanged(Editable s) {
+            @Override public void afterTextChanged(Editable s) {
                 if (isBulkProgrammaticChange) return;
                 if (!s.toString().equals(current)) {
                     binding.etExistingFunds.removeTextChangedListener(this);
 
-                    String cleanString = s.toString().replaceAll("[^\\d]", "");
+                    String cleanString = s.toString().replaceAll("[^\\d.,]", "");
                     if (cleanString.isEmpty()) {
                         current = "";
                         binding.etExistingFunds.setText("");
                         binding.etExistingFunds.addTextChangedListener(this);
                         return;
                     }
-                    double parsed = Double.parseDouble(cleanString);
+                    double parsed = parseIdNumber(cleanString);
 
-                    // Format ke 1.000.000,00
                     String formatted = numberFormat.format(parsed);
 
                     current = formatted;
@@ -339,49 +336,43 @@ public class CalculatorFragment extends Fragment {
                     binding.etExistingFunds.addTextChangedListener(this);
                 }
             }
-
         });
 
         binding.etMonthlyInvestment.addTextChangedListener(new TextWatcher() {
             private String current = "";
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String cleanInput = s.toString().trim().replace(",", "").replace(".", "");
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String inputStr = s.toString().trim();
 
-                if (cleanInput.isEmpty()) {
+                if (inputStr.isEmpty()) {
                     binding.tvInvestmentReturnLabel.setVisibility(View.GONE);
                     binding.layoutInvestmentReturn.setVisibility(View.GONE);
                     return;
-                } else if (cleanInput.equals("0")) {
+                } else if (parseIdNumber(inputStr) == 0.0) {
                     binding.etMonthlyInvestment.setError("Angka harus lebih dari 0");
                     return;
                 }
 
                 binding.tvInvestmentReturnLabel.setVisibility(View.VISIBLE);
                 binding.layoutInvestmentReturn.setVisibility(View.VISIBLE);
-
             }
 
-            @Override
-            public void afterTextChanged(Editable s) {
+            @Override public void afterTextChanged(Editable s) {
                 if (isBulkProgrammaticChange) return;
                 if (!s.toString().equals(current)) {
                     binding.etMonthlyInvestment.removeTextChangedListener(this);
 
-                    String cleanString = s.toString().replaceAll("[^\\d]", "");
+                    String cleanString = s.toString().replaceAll("[^\\d.,]", "");
                     if (cleanString.isEmpty()) {
                         current = "";
                         binding.etMonthlyInvestment.setText("");
                         binding.etMonthlyInvestment.addTextChangedListener(this);
                         return;
                     }
-                    double parsed = Double.parseDouble(cleanString);
+                    double parsed = parseIdNumber(cleanString);
 
-                    // Format ke 1.000.000,00
                     String formatted = numberFormat.format(parsed);
 
                     current = formatted;
@@ -391,25 +382,22 @@ public class CalculatorFragment extends Fragment {
                     binding.etMonthlyInvestment.addTextChangedListener(this);
                 }
             }
-
         });
 
         binding.etInvestmentReturn.addTextChangedListener(new TextWatcher() {
             private String current = "";
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String cleanInput = s.toString().trim().replace(",", "").replace(".", "");
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String inputStr = s.toString().trim();
 
-                if (cleanInput.isEmpty()) {
+                if (inputStr.isEmpty()) {
                     binding.tvAgeNeededLabel.setVisibility(View.GONE);
                     binding.layoutAgeNeeded.setVisibility(View.GONE);
                     binding.layoutCtaResult.setVisibility(View.GONE);
                     return;
-                } else if (cleanInput.equals("0")) {
+                } else if (parseIdNumber(inputStr) == 0.0) {
                     binding.etInvestmentReturn.setError("Angka harus lebih dari 0");
                     return;
                 }
@@ -429,22 +417,20 @@ public class CalculatorFragment extends Fragment {
 
             }
 
-            @Override
-            public void afterTextChanged(Editable s) {
+            @Override public void afterTextChanged(Editable s) {
                 if (isBulkProgrammaticChange) return;
                 if (!s.toString().equals(current)) {
                     binding.etInvestmentReturn.removeTextChangedListener(this);
 
-                    String cleanString = s.toString().replaceAll("[^\\d]", "");
+                    String cleanString = s.toString().replaceAll("[^\\d.,]", "");
                     if (cleanString.isEmpty()) {
                         current = "";
                         binding.etInvestmentReturn.setText("");
                         binding.etInvestmentReturn.addTextChangedListener(this);
                         return;
                     }
-                    double parsed = Double.parseDouble(cleanString);
+                    double parsed = parseIdNumber(cleanString);
 
-                    // Format ke 1.000.000,00
                     String formatted = numberFormat.format(parsed);
 
                     current = formatted;
@@ -454,7 +440,6 @@ public class CalculatorFragment extends Fragment {
                     binding.etInvestmentReturn.addTextChangedListener(this);
                 }
             }
-
         });
 
         binding.cardCtaArrow.setOnClickListener(new View.OnClickListener() {

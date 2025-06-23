@@ -67,19 +67,4 @@
         app:layout_constraintTop_toBottomOf="@id/tv_toolbar_title"
         tools:listitem="@layout/item_goal" />
 
-    <!-- =================================================================== -->
-    <!-- Tombol Floating untuk Tambah Goals -->
-    <!-- =================================================================== -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_goal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:contentDescription="Tambah Goals"
-        android:src="@drawable/ic_add"
-        app:backgroundTint="@color/palet2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/white"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

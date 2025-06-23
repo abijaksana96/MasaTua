@@ -19,6 +19,7 @@ import com.example.masatua.utils.FirebaseManager;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.Locale;
 
 public class ResultFragment extends Fragment {
@@ -54,10 +55,10 @@ public class ResultFragment extends Fragment {
             String duration = bundle.getString("duration", "");
 
             //region Clean and Check Input
-            double totalNeeded = parseDoubleSafe(totalNeededStr);
-            double uangAwal = parseDoubleSafe(existingFund);
-            double investasiBulanan = parseDoubleSafe(monthlyInvestment);
-            double returnPerTahun = parseDoubleSafe(returnRate) / 100;
+            double totalNeeded = parseIdNumber(totalNeededStr);
+            double uangAwal = parseIdNumber(existingFund);
+            double investasiBulanan = parseIdNumber(monthlyInvestment);
+            double returnPerTahun = parseIdNumber(returnRate) / 100;
             int tahun = parseIntSafe(duration);
             int bulan = tahun * 12;
             //endregion
@@ -115,14 +116,13 @@ public class ResultFragment extends Fragment {
         return view;
     }
 
-    // Membersihkan input angka dari karakter ribuan/koma lalu parsing double
-    private double parseDoubleSafe(String s) {
+    // Fungsi parse Indonesia Format (SIAP tempel, gunakan dimana saja untuk angka dari UI)
+    public static double parseIdNumber(String s) {
         if (s == null || s.trim().isEmpty()) return 0;
-        // Untuk format id: "1.234.567,89"
-        s = s.replace(".", "").replace(",", ".");
         try {
-            return Double.parseDouble(s);
-        } catch (NumberFormatException e) {
+            NumberFormat nf = NumberFormat.getNumberInstance(new Locale("id", "ID"));
+            return nf.parse(s.trim()).doubleValue();
+        } catch (ParseException e) {
             return 0;
         }
     }
@@ -163,19 +163,19 @@ public class ResultFragment extends Fragment {
             return;
         }
 
-        long targetDana, danaSekarang;
+        double targetDana, danaSekarang;
         int tahunTarget;
         double invest = 0.0, returnInvest = 0.0;
 
         try {
-            targetDana = parseLongIdFormat(targetDanaStr);
-        } catch (NumberFormatException e) {
+            targetDana = parseIdNumber(targetDanaStr);
+        } catch (Exception e) {
             Toast.makeText(getContext(), "Target Dana harus angka yang valid", Toast.LENGTH_LONG).show();
             return;
         }
         try {
-            danaSekarang = parseLongIdFormat(danaSekarangStr);
-        } catch (NumberFormatException e) {
+            danaSekarang = parseIdNumber(danaSekarangStr);
+        } catch (Exception e) {
             Toast.makeText(getContext(), "Dana Saat Ini harus angka yang valid", Toast.LENGTH_LONG).show();
             return;
         }
@@ -187,16 +187,16 @@ public class ResultFragment extends Fragment {
         }
         if (!investStr.isEmpty()) {
             try {
-                invest = parseDoubleSafe(investStr);
-            } catch (NumberFormatException e) {
+                invest = parseIdNumber(investStr);
+            } catch (Exception e) {
                 Toast.makeText(getContext(), "Invest harus angka yang valid", Toast.LENGTH_LONG).show();
                 return;
             }
         }
         if (!returnInvestStr.isEmpty()) {
             try {
-                returnInvest = parseDoubleSafe(returnInvestStr);
-            } catch (NumberFormatException e) {
+                returnInvest = parseIdNumber(returnInvestStr);
+            } catch (Exception e) {
                 Toast.makeText(getContext(), "Return Invest harus angka yang valid", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -242,21 +242,5 @@ public class ResultFragment extends Fragment {
                 })
                 .setNegativeButton("Batal", null)
                 .show();
-    }
-
-    public long parseLongIdFormat(String s) {
-        if (s == null) return 0;
-        // Hilangkan semua karakter selain digit
-        s = s.replaceAll("[^\\d]", "");
-        if (s.isEmpty()) return 0;
-        return Long.parseLong(s);
-    }
-
-    public double parseDoubleIdFormat(String s) {
-        if (s == null) return 0;
-        // Hilangkan titik ribuan, ganti koma menjadi titik
-        s = s.replace(".", "").replace(",", ".");
-        if (s.isEmpty()) return 0;
-        return Double.parseDouble(s);
     }
 }

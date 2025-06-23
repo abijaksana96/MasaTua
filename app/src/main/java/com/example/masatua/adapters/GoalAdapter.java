@@ -18,6 +18,11 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class GoalAdapter extends FirestoreRecyclerAdapter<Goal, GoalAdapter.ViewHolder> {
 
     public interface OnItemClickListener {
@@ -84,13 +89,22 @@ public class GoalAdapter extends FirestoreRecyclerAdapter<Goal, GoalAdapter.View
         }
 
         public void bind(final Goal goal) {
+            //region NumberFormat
+            // Membuat NumberFormat untuk locale Indonesia
+            DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getNumberInstance(new Locale("id", "ID"));
+            DecimalFormatSymbols symbols = numberFormat.getDecimalFormatSymbols();
+            symbols.setGroupingSeparator('.'); // Pemisah ribuan
+            symbols.setDecimalSeparator(',');  // Pemisah desimal
+            numberFormat.setDecimalFormatSymbols(symbols);
+            //endregion
+
             binding.tvGoalTitle.setText(goal.getNamaGoals());
 
             StringBuilder fundDescription = new StringBuilder();
             fundDescription.append("Dana Saat Ini : Rp");
-            fundDescription.append(goal.getDanaSekarang());
+            fundDescription.append(numberFormat.format(goal.getDanaSekarang()));
             fundDescription.append(" Dari Target Rp");
-            fundDescription.append(goal.getTargetDana());
+            fundDescription.append(numberFormat.format(goal.getTargetDana()));
 
             binding.tvFundDescription.setText(fundDescription);
 

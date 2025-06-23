@@ -20,17 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_back_button_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_back"
-        app:layout_constraintBottom_toBottomOf="@id/iv_back_button_bg"
-        app:layout_constraintEnd_toEndOf="@id/iv_back_button_bg"
-        app:layout_constraintStart_toStartOf="@id/iv_back_button_bg"
-        app:layout_constraintTop_toTopOf="@id/iv_back_button_bg"
-        app:tint="@color/white" />
-
     <TextView
         android:id="@+id/tv_toolbar_title"
         android:layout_width="wrap_content"
@@ -44,6 +33,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/iv_back_button_bg" />
 
+    <!-- =================================================================== -->
+    <!-- Tampilan jika data kosong -->
+    <!-- =================================================================== -->
+    <TextView
+        android:id="@+id/tv_empty_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Anda belum memiliki target apapun."
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tv_toolbar_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- =================================================================== -->
     <!-- Daftar Goals -->
@@ -61,5 +66,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_toolbar_title"
         tools:listitem="@layout/item_goal" />
+
+    <!-- =================================================================== -->
+    <!-- Tombol Floating untuk Tambah Goals -->
+    <!-- =================================================================== -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="Tambah Goals"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/palet2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
